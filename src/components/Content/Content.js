@@ -9,12 +9,12 @@ import HourlyWeather from '../HourlyWeather/HourlyWeather';
 import styles from './Content.module.css';
 
 const Content = () => {
-  const [type, setType] = useState('current')
+  const [type, setType] = useState('current');
 
   return (
-    <Container className={`${ styles.container }`}>
-      <Row className={`${ styles.overlay }`}>
-        <Col style={{ padding: "unset" }}>
+    <Container className={`${styles.container}`}>
+      <Row className={`${styles.overlay}`}>
+        <Col style={{ padding: 'unset' }}>
           <TopBar />
           <ContentController setSelectedContentType={setType} />
           <div style={{ display: type === 'hourly' ? 'none' : 'inline' }} >

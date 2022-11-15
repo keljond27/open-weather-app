@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 import { fetchGeoLocationDataByQuery, fetchGeoLocationDataByZip, fetchReverseGeoLocationData } from '../../store/thunks';
 
 const LocationSearch = () => {
-
   const dispatch = useDispatch();
 
   const [searchText, setSearchText] = useState('');
@@ -23,8 +22,8 @@ const LocationSearch = () => {
   }
 
   const handleGetLocationOnClick = () => {
+    //COULD ALSO DO THIS AUTOMATICALLY...
     navigator.geolocation.getCurrentPosition((data, err) => {
-      console.log(searchText)
       const { latitude, longitude } = data?.coords
       dispatch(fetchReverseGeoLocationData({ lat: latitude, lon: longitude }));
       if (err) toast.error(`Error: ${err}`, toast.POSITION.TOP_CENTER);
@@ -49,9 +48,9 @@ const LocationSearch = () => {
     <Row>
       <Col>
         <InputGroup>
-          <Form.Control placeholder='12345 or City, ST' size='sm' value={ searchText } onChange={ handleInputOnChange } onKeyDown={handleInputOnEnter} />
-          <InputGroup.Text as='button' onClick={ handleButtonOnClick }><FaSearch /></InputGroup.Text>
-          <InputGroup.Text as='button' onClick={ handleGetLocationOnClick }><BiTargetLock /></InputGroup.Text>
+          <Form.Control placeholder='12345 or City, ST' size='sm' value={searchText} onChange={handleInputOnChange} onKeyDown={handleInputOnEnter} />
+          <InputGroup.Text as='button' onClick={handleButtonOnClick}><FaSearch /></InputGroup.Text>
+          <InputGroup.Text as='button' onClick={handleGetLocationOnClick}><BiTargetLock /></InputGroup.Text>
         </InputGroup>
       </Col>
     </Row>

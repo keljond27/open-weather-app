@@ -23,7 +23,7 @@ const CurrentWeather = () => {
     //SET BACKGROUND GRAPHIC
     if (weather && weather.id) {
       let timeOfDay = 'day';
-      let imgObj = WEATHER_CODE_TO_IMAGE[weather?.weather[0].id]
+      let imgObj = WEATHER_CODE_TO_IMAGE[weather?.weather[0].id];
       timeOfDay = weather.dt > weather.sys.sunrise && weather.dt < weather.sys.sunset ? 'day' : 'night';
       setBackgroundImage(imgObj[timeOfDay]);
       setCurrentTemp(parseInt(weather?.main?.temp));
@@ -35,6 +35,7 @@ const CurrentWeather = () => {
   }, [weather])
 
   useEffect(() => {
+    //SET LOCATION
     if (location && location.name) {
       setLocationName(location.name);
       setLocationState(STATE_ABBREVIATIONS[location.state]);
@@ -72,7 +73,7 @@ const CurrentWeather = () => {
             <FaArrowDown />
             {lowTemp}{lowTemp && '\u00b0'}{' '}
             <span>&nbsp;&nbsp;Feels Like: </span>
-            {feelTemp}{feelTemp && '\u00b0'} 
+            {feelTemp}{feelTemp && '\u00b0'}
           </div>
         </Col>
       </Row>

@@ -14,7 +14,7 @@ export const fetchGeoLocationDataByZip = createAsyncThunk(
           const { lat, lon } = await data.json();
           thunkAPI.dispatch(fetchReverseGeoLocationData({ lat, lon }));
         } else {
-          toast.error("something went wrong", { position: toast.POSITION.TOP_CENTER })
+          toast.error('something went wrong', { position: toast.POSITION.TOP_CENTER })
         }
       })
       .catch(err => console.error(err));
@@ -31,7 +31,7 @@ export const fetchGeoLocationDataByQuery = createAsyncThunk(
         if (data.ok) {
           return data.json();
         } else {
-          toast.error("something went wrong", { position: toast.POSITION.TOP_CENTER })
+          toast.error('something went wrong', { position: toast.POSITION.TOP_CENTER })
         }
       })
       .catch(err => console.error(err));
@@ -48,7 +48,7 @@ export const fetchReverseGeoLocationData = createAsyncThunk(
         if (data.ok) {
           return data.json();
         } else {
-          toast.error("something went wrong", { position: toast.POSITION.TOP_CENTER })
+          toast.error('something went wrong', { position: toast.POSITION.TOP_CENTER })
         }
       })
       .catch(err => console.error(err));
@@ -66,7 +66,7 @@ export const fetchCurrentWeatherData = createAsyncThunk(
         if (data.ok) {
           return data.json();
         } else {
-          toast.error("something went wrong", { position: toast.POSITION.TOP_CENTER })
+          toast.error('something went wrong', { position: toast.POSITION.TOP_CENTER })
         }
       })
       .catch(err => console.error(err));
@@ -79,12 +79,11 @@ export const fetchForecastWeatherData = createAsyncThunk(
   async (payload, thunkAPI) => {
     const { lat, lon } = payload;
     const res = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,daily,alerts&units=imperial&appid=${API_KEY}`)
-    //const res = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=f4a9e62be9f28929f398033feec0e9cf`)
       .then(data => {
         if (data.ok) {
           return data.json();
         } else {
-          toast.error("something went wrong", { position: toast.POSITION.TOP_CENTER })
+          toast.error('something went wrong', { position: toast.POSITION.TOP_CENTER })
         }
       })
       .catch(err => console.error(err));
