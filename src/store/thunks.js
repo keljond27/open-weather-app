@@ -78,7 +78,8 @@ export const fetchForecastWeatherData = createAsyncThunk(
   'weather/fetchForecastWeatherData',
   async (payload, thunkAPI) => {
     const { lat, lon } = payload;
-    const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${API_KEY}`)
+    const res = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,daily,alerts&units=imperial&appid=${API_KEY}`)
+    //const res = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=f4a9e62be9f28929f398033feec0e9cf`)
       .then(data => {
         if (data.ok) {
           return data.json();

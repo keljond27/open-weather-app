@@ -47,4 +47,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 # NOTES
 
-Icons provided by https://www.svgrepo.com/collection/weather-34/
+Graphics provided by https://www.svgrepo.com/collection/weather-34/

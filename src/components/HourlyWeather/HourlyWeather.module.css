@@ -1,0 +1,41 @@
+.container {
+  min-height: calc(100% - 200px);
+  background: linear-gradient(to right, #fff, transparent, rgb(61,139,253));
+}
+
+.hourly_item {
+  padding: 0 25px;
+  background-repeat: no-repeat !important;
+  background-position: 100px;
+  background-size: 80px;
+  border-top: solid 2px rgba(0, 0, 0, 0.05);
+  border-left: solid 2px rgba(0, 0, 0, 0.15);
+}
+
+.location {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 25px;
+  background-color: rgba(175, 175, 175);
+  border-left: solid 2px rgba(0, 0, 0, 0.15);
+}
+
+.time {
+  padding: 15px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.temp {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.description {
+  color: #fff;
+  padding-top: 10px;
+  text-align: right;
+  font-size: 28px;
+  font-weight: bold;
+}

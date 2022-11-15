@@ -20,34 +20,21 @@ function App() {
   useEffect(() => {
     if (location?.lat && location?.lon) {
       const { lat, lon } = location;
-      //if there's a location and the app is running, it will refresh the weather data every hour
-      setInterval(() => {
-        dispatch(fetchCurrentWeatherData({ lat, lon }));
-        dispatch(fetchForecastWeatherData({ lat, lon }));
-      }, (1000*60*60))
+      
+      //run it once...
+      dispatch(fetchCurrentWeatherData({ lat, lon }));
+      dispatch(fetchForecastWeatherData({ lat, lon }));
+
+      //if there's a location and the app is running, it will refresh the weather data every hour on the hour
+      let msToNextHour = 3600000 - new Date().getTime() % 3600000;
+      setTimeout(() => {
+        setInterval(() => {
+          dispatch(fetchCurrentWeatherData({ lat, lon }));
+          dispatch(fetchForecastWeatherData({ lat, lon }));
+        }, (1000*60*60))
+      }, msToNextHour)
     }
   }, [location])
-
-  /* 
-
-  const dispatch = useDispatch();
-  const geolocation = useSelector(state => state.geolocation);
-  
-  useEffect(() => {
-    dispatch(fetchGeoLocationDataByZip('46280'));
-  }, []);
-
-  useEffect(() => {
-    console.log(geolocation)
-    dispatch(fetchCurrentWeatherData({lat: geolocation?.lat, lon: geolocation?.lon}))
-  }, [geolocation]) */
-
-
-  /*   useEffect(() => {
-      //how to change favicon
-      let icon = document.getElementById('favicon');
-      icon.href = "/assets/1.ico"
-    }, []) */
 
   return (
     <Container className={styles.container} fluid="sm">
