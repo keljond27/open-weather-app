@@ -20,8 +20,11 @@ function App() {
   useEffect(() => {
     if (location?.lat && location?.lon) {
       const { lat, lon } = location;
-      dispatch(fetchCurrentWeatherData({ lat, lon }));
-      dispatch(fetchForecastWeatherData({ lat, lon }));
+      //if there's a location and the app is running, it will refresh the weather data every hour
+      setInterval(() => {
+        dispatch(fetchCurrentWeatherData({ lat, lon }));
+        dispatch(fetchForecastWeatherData({ lat, lon }));
+      }, (1000*60*60))
     }
   }, [location])
 
@@ -51,8 +54,6 @@ function App() {
       <Row className="justify-content-md-center" style={{ height: "100%"}}>
         <Col sm={1} xl={2} className="d-none d-sm-block" />
         <Col className={styles.content}>
-          <TopBar />
-          <ContentController setSelectedContentType={setSelectedContentType} />
           <Content type={selectedContentType} />
         </Col>
         <Col sm={1} xl={2} className="d-none d-sm-block" />
