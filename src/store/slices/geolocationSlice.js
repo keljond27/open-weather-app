@@ -11,7 +11,7 @@ export const geolocationSlice = createSlice({
   extraReducers: (builder) => {
     //geo locate by query (location name)
     builder.addCase(fetchGeoLocationDataByQuery.fulfilled, (state, action) => {
-      return action.payload;
+      return action.payload[0];
     });
     //geo locate by zip
     builder.addCase(fetchGeoLocationDataByZip.fulfilled, (state, action) => {

@@ -1,27 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Col, Row, InputGroup, Form } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { FaSearch } from 'react-icons/fa';
 import { BiTargetLock } from 'react-icons/bi';
+import { toast } from 'react-toastify';
 
 import { fetchGeoLocationDataByQuery, fetchGeoLocationDataByZip, fetchReverseGeoLocationData } from '../../store/thunks';
-import { STATE_ABBREVIATIONS } from '../../constants';
 
 const LocationSearch = () => {
 
   const dispatch = useDispatch();
 
-  const location = useSelector(state => state.geolocation);
-
   const [searchText, setSearchText] = useState('');
-  //const [useBrowserLocation, setUseBrowserLocation] = useState(false);
-
-/*   useEffect(() => {
-    if (location?.lat && location?.lon && !!useBrowserLocation) {
-      setSearchText(`${location.name}, ${STATE_ABBREVIATIONS[location.state]}`)
-    }
-    setUseBrowserLocation(false);
-  }, [useBrowserLocation]) */
 
   const handleButtonOnClick = () => {
     if (!isNaN(parseInt(searchText))) {
@@ -34,9 +24,10 @@ const LocationSearch = () => {
 
   const handleGetLocationOnClick = () => {
     navigator.geolocation.getCurrentPosition((data, err) => {
+      console.log(searchText)
       const { latitude, longitude } = data?.coords
       dispatch(fetchReverseGeoLocationData({ lat: latitude, lon: longitude }));
-      //setUseBrowserLocation(true)
+      if (err) toast.error(`Error: ${err}`, toast.POSITION.TOP_CENTER);
     });
   }
 

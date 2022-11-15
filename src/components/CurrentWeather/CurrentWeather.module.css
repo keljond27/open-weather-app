@@ -1,0 +1,37 @@
+.container {
+  min-height: calc(100% - 200px);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  -webkit-transition: background-image 0.2s ease-in-out;
+  transition: background-image 0.2s ease-in-out;
+  opacity: 0.8;
+}
+
+.location_header {
+  font-size: 46px;
+  text-align: right;
+  padding: 10px;
+  padding-top: 30px;
+}
+
+.details {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.current_temp {
+  font-weight: bold;
+  line-height: 200px;
+  font-size: 200px;
+  padding: 80px;
+  padding-bottom: 0;
+}
+
+.high_low {
+  font-weight: bold;
+  line-height: 20px;
+  font-size: 20px;
+  padding-left: 80px;
+  padding-bottom: 0;
+}
